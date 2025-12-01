@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mimi, For You 💗</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at top,#ffd6ea,#ffeaf6,#fff7fc);
+    text-align:center;
+    overflow:hidden;
+}
+
+/* Sparkle background */
+.sparkle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+    0%{opacity:0.1; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.7);}
+    100%{opacity:0.1; transform:scale(1);}
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    top:-20px;
+    color:#ff7aa8;
+    font-size:22px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0) rotate(0); opacity:1;}
+    100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
+}
+
+/* Mimi main glow */
+h1{
+    margin-top:70px;
+    font-size:42px;
+    color:#ff5c95;
+    text-shadow:0 0 25px #ff9ec1;
+    animation:glow 2.2s infinite alternate;
+}
+@keyframes glow{
+    from{ text-shadow:0 0 12px #ffa4ca; }
+    to{ text-shadow:0 0 32px #ff5c95; }
+}
+
+/* Smooth floating */
+.floating{
+    animation:floating 3s ease-in-out infinite;
+}
+@keyframes floating{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+/* Buttons */
+button{
+    margin:14px;
+    padding:15px 38px;
+    font-size:20px;
+    border-radius:40px;
+    border:none;
+    cursor:pointer;
+    transition:0.25s;
+}
+#yes{
+    background:#ff5fa2;
+    color:white;
+    box-shadow:0 0 15px #ff9cc8;
+}
+#no{
+    background:#ffd1e8;
+    color:#a14b70;
+}
+
+/* Yes Explosion */
+#boom{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    font-size:50px;
+    opacity:0;
+    animation:boom 1.2s forwards;
+}
+@keyframes boom{
+    0%{transform:scale(0.3); opacity:0;}
+    100%{transform:scale(3); opacity:0;}
+}
+
+/* Fade text */
+.fade{
+    animation:fade 2s forwards;
+}
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<!-- Sparkles -->
+<script>
+for(let i=0;i<50;i++){
+    let s=document.createElement("div");
+    s.classList.add("sparkle");
+    s.style.top=Math.random()*100+"vh";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDelay=Math.random()*3+"s";
+    document.body.appendChild(s);
+}
+</script>
+
+<!-- Hearts -->
+<script>
+for(let i=0;i<35;i++){
+    let h=document.createElement("div");
+    h.classList.add("heart");
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+<source src="https://files.catbox.moe/q3qk4t.mp3" type="audio/mpeg">
+</audio>
+
+<h1 class="floating">Mimi… 💗</h1>
+
+<h2 id="line1" class="floating" style="color:#945070;">
+There’s something soft and pure I want to say…
+</h2>
+
+<h2 id="question" class="floating" style="margin-top:35px; color:#7b3f5e;">
+Will you be mine, Mimi? 💞
+</h2>
+
+<button id="yes" onclick="yesClick()">Yes 💕</button>
+<button id="no" onclick="noClick()">No 🙈</button>
+
+<div id="boom" class="hidden">💖</div>
+
+<h2 id="yesmsg" class="hidden fade floating"
+style="margin-top:40px; font-size:22px; color:#8e3c5f;">
+Mimi… 💗<br><br>
+You just made my heart melt in the most beautiful way.<br>
+Your “yes” is the sweetest thing I’ve ever received.<br><br>
+I promise to make you feel loved, safe, and cherished.<br>
+From today… this is our story.<br>
+Forever. Always. 💞
+</h2>
+
+<script>
+let messages=[
+"Are you sure Mimi? 🥺",
+"Think again… softly. 💗",
+"Don't break my cute little heart 😳",
+"Just feel it once more… 💕",
+"You know I adore you, right? 😌",
+"Give it a chance… just once 😣💗",
+"Are you really certain, beautiful? 🌸",
+"Last chance Mimi… truly 💞",
+"You feel it too, don’t you? 💓",
+"Just say yes… I'll hold you carefully forever 🥺💗"
+];
+let x=0;
+
+function noClick(){
+    document.getElementById("question").innerHTML=messages[x];
+    x = (x+1)%messages.length;
+}
+
+function yesClick(){
+    let boom=document.getElementById("boom");
+    boom.classList.remove("hidden");
+    setTimeout(()=>{
+        boom.classList.add("hidden");
+        document.getElementById("line1").classList.add("hidden");
+        document.getElementById("question").classList.add("hidden");
+        document.getElementById("yesmsg").classList.remove("hidden");
+    },1100);
+}
+</script>
+
+</body>
+</html>DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mimi, For You 💗</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at top,#ffd6ea,#ffeaf6,#fff7fc);
+    text-align:center;
+    overflow:hidden;
+}
+
+/* Sparkle background */
+.sparkle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+    0%{opacity:0.1; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.7);}
+    100%{opacity:0.1; transform:scale(1);}
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    top:-20px;
+    color:#ff7aa8;
+    font-size:22px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0) rotate(0); opacity:1;}
+    100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
+}
+
+/* Mimi main glow */
+h1{
+    margin-top:70px;
+    font-size:42px;
+    color:#ff5c95;
+    text-shadow:0 0 25px #ff9ec1;
+    animation:glow 2.2s infinite alternate;
+}
+@keyframes glow{
+    from{ text-shadow:0 0 12px #ffa4ca; }
+    to{ text-shadow:0 0 32px #ff5c95; }
+}
+
+/* Smooth floating */
+.floating{
+    animation:floating 3s ease-in-out infinite;
+}
+@keyframes floating{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+/* Buttons */
+button{
+    margin:14px;
+    padding:15px 38px;
+    font-size:20px;
+    border-radius:40px;
+    border:none;
+    cursor:pointer;
+    transition:0.25s;
+}
+#yes{
+    background:#ff5fa2;
+    color:white;
+    box-shadow:0 0 15px #ff9cc8;
+}
+#no{
+    background:#ffd1e8;
+    color:#a14b70;
+}
+
+/* Yes Explosion */
+#boom{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    font-size:50px;
+    opacity:0;
+    animation:boom 1.2s forwards;
+}
+@keyframes boom{
+    0%{transform:scale(0.3); opacity:0;}
+    100%{transform:scale(3); opacity:0;}
+}
+
+/* Fade text */
+.fade{
+    animation:fade 2s forwards;
+}
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<!-- Sparkles -->
+<script>
+for(let i=0;i<50;i++){
+    let s=document.createElement("div");
+    s.classList.add("sparkle");
+    s.style.top=Math.random()*100+"vh";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDelay=Math.random()*3+"s";
+    document.body.appendChild(s);
+}
+</script>
+
+<!-- Hearts -->
+<script>
+for(let i=0;i<35;i++){
+    let h=document.createElement("div");
+    h.classList.add("heart");
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+<source src="https://files.catbox.moe/q3qk4t.mp3" type="audio/mpeg">
+</audio>
+
+<h1 class="floating">Mimi… 💗</h1>
+
+<h2 id="line1" class="floating" style="color:#945070;">
+There’s something soft and pure I want to say…
+</h2>
+
+<h2 id="question" class="floating" style="margin-top:35px; color:#7b3f5e;">
+Will you be mine, Mimi? 💞
+</h2>
+
+<button id="yes" onclick="yesClick()">Yes 💕</button>
+<button id="no" onclick="noClick()">No 🙈</button>
+
+<div id="boom" class="hidden">💖</div>
+
+<h2 id="yesmsg" class="hidden fade floating"
+style="margin-top:40px; font-size:22px; color:#8e3c5f;">
+Mimi… 💗<br><br>
+You just made my heart melt in the most beautiful way.<br>
+Your “yes” is the sweetest thing I’ve ever received.<br><br>
+I promise to make you feel loved, safe, and cherished.<br>
+From today… this is our story.<br>
+Forever. Always. 💞
+</h2>
+
+<script>
+let messages=[
+"Are you sure Mimi? 🥺",
+"Think again… softly. 💗",
+"Don't break my cute little heart 😳",
+"Just feel it once more… 💕",
+"You know I adore you, right? 😌",
+"Give it a chance… just once 😣💗",
+"Are you really certain, beautiful? 🌸",
+"Last chance Mimi… truly 💞",
+"You feel it too, don’t you? 💓",
+"Just say yes… I'll hold you carefully forever 🥺💗"
+];
+let x=0;
+
+function noClick(){
+    document.getElementById("question").innerHTML=messages[x];
+    x = (x+1)%messages.length;
+}
+
+function yesClick(){
+    let boom=document.getElementById("boom");
+    boom.classList.remove("hidden");
+    setTimeout(()=>{
+        boom.classList.add("hidden");
+        document.getElementById("line1").classList.add("hidden");
+        document.getElementById("question").classList.add("hidden");
+        document.getElementById("yesmsg").classList.remove("hidden");
+    },1100);
+}
+</script>
+
+</body>
+</html>
