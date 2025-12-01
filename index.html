@@ -2,129 +2,227 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<title>For Mimi ❤️ From Rujul</title>
 
 <style>
-body{
-    margin:0;
-    padding:0;
-    font-family:'Poppins', sans-serif;
-    background:linear-gradient(135deg,#ffd6e8,#ffe9f3,#ffd6e8);
-    text-align:center;
-    overflow:hidden;
-}
+    body{
+        margin:0;
+        padding:0;
+        font-family:'Poppins', sans-serif;
+        background:linear-gradient(135deg,#ffd6e8,#ffe9f3,#ffd6e8);
+        text-align:center;
+        overflow:hidden;
+    }
 
-/* Floating hearts */
-@keyframes float {
-  0% { transform: translateY(0) scale(1); opacity:1; }
-  100% { transform: translateY(-800px) scale(1.5); opacity:0; }
-}
-.heart {
-  position: absolute;
-  bottom: -50px;
-  color: #ff5e9c;
-  font-size: 20px;
-  opacity: 0.7;
-  animation: float 6s linear infinite;
-}
+    h1,h2,p{
+        color:#ff3f80;
+    }
 
-/* Box */
-#mainBox{
-    margin-top:100px;
-    padding:20px;
-    background:white;
-    width:80%;
-    max-width:360px;
-    border-radius:20px;
-    box-shadow:0 0 25px rgba(255,100,150,0.4);
-    display:none;
-}
+    #introBox{
+        margin-top:90px;
+        font-size:22px;
+        width:85%;
+        margin-left:auto;
+        margin-right:auto;
+        line-height:30px;
+        animation:fadeIn 2s;
+    }
 
-/* Puzzle */
-#puzzleBox{
-    margin-top:120px;
-    padding:20px;
-    color:#ff3f8c;
-}
+    #puzzleBox{
+        margin-top:50px;
+        display:none;
+        animation:fadeIn 1s;
+    }
 
-.button{
-    padding:10px 20px;
-    border:none;
-    border-radius:25px;
-    font-size:17px;
-    margin:10px;
-    cursor:pointer;
-}
-.yes{
-    background:#ff4fa3;
-    color:white;
-}
-.no{
-    background:#ffd0e6;
-    color:#ff2474;
-}
+    #mainBox{
+        display:none;
+        margin-top:60px;
+        animation:fadeIn 1s;
+    }
+
+    button{
+        font-size:22px;
+        padding:12px 28px;
+        margin:12px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+    }
+
+    .yes{
+        background:#ff3f80;
+        color:white;
+    }
+
+    .no{
+        background:white;
+        color:#ff3f80;
+        border:2px solid #ff3f80;
+        position:relative;
+    }
+
+    @keyframes fadeIn{
+        from{opacity:0; transform:translateY(20px);}
+        to{opacity:1; transform:translateY(0);}
+    }
+
+    .heart{
+        position:fixed;
+        font-size:25px;
+        animation:float 3s linear;
+    }
+
+    @keyframes float{
+        0%{transform:translateY(0); opacity:1;}
+        100%{transform:translateY(-150px); opacity:0;}
+    }
 </style>
-
 </head>
+
 <body>
 
-<!-- Hearts animation -->
-<script>
-function createHeart(){
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💗";
-    heart.style.left=Math.random()*100+"%";
-    heart.style.animationDuration=(Math.random()*3+3)+"s";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),6000);
-}
-setInterval(createHeart,300);
-</script>
-
-<!-- Background Music -->
-<audio id="bgm" loop autoplay>
-  <source src="https://sndup.net/vr8t/d" type="audio/mpeg">
+<!-- Background Song -->
+<audio id="bgMusic" autoplay loop>
+    <source src="https://files.catbox.moe/4ql7ok.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PUZZLE START -->
-<div id="puzzleBox">
-    <h2>💞 Before I say something... solve this 💞</h2>
-    <p style="font-size:18px;">"💖 What is the one thing I feel whenever I see you?"</p>
-    <button class="button" onclick="wrong()">Bored 😴</button>
-    <button class="button" onclick="wrong()">Confused 😵‍💫</button>
-    <button class="button yes" onclick="correct()">Butterflies 🦋</button>
+<script>
+document.addEventListener("click", ()=> {
+    document.getElementById("bgMusic").play();
+});
+</script>
+
+
+<!-- Floating Hearts -->
+<script>
+function createHearts(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.top="100vh";
+    heart.style.fontSize=(20+Math.random()*20)+"px";
+    heart.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+}
+setInterval(createHearts,300);
+</script>
+
+
+<!-- INTRO STORY -->
+<div id="introBox">
+    <h1>Hey Mimi ❤️</h1>
+    <p>
+        Before anything else… I want you to know something.<br><br>
+        I didn’t fall for you suddenly.  
+        It happened slowly, in little moments —  
+        the way you talk, the way you smile,  
+        the way your presence feels like home. <br><br>
+
+        So, before I ask you something important…  
+        let's make it a little fun.  
+        Solve this tiny puzzle first 😌💗
+    </p>
+
+    <button class="yes" onclick="startPuzzle()">Start Puzzle 💞</button>
 </div>
+
+
+<!-- PUZZLE -->
+<div id="puzzleBox">
+    <h2>Solve this: What has 4 letters, sometimes 9, but never 5?</h2>
+    <p style="font-size:20px; margin-top:20px;">(Hint: Think simple 😌)</p>
+
+    <button class="yes" onclick="showMain()">I got it! 💗</button>
+</div>
+
 
 <!-- MAIN PROPOSAL -->
 <div id="mainBox">
-    <h1>Mimi... 💗</h1>
-    <p style="font-size:17px;">There’s something sweet I want to say…</p>
-    <p style="font-size:20px;">Will you be mine? 💞</p>
+    <h2 style="font-size:30px;">Mimi… can I ask you something? ❤️</h2>
+    <p style="font-size:22px;">Will you be mine? 💞</p>
 
-    <button class="button yes" onclick="yesClicked()">Yes 💖</button>
-    <button class="button no" id="noBtn" onmouseover="moveNo()">No 😭</button>
+    <button class="yes" onclick="sayYes()">Yes 💗</button>
+    <button class="no" id="noBtn" onclick="noMove()">No 😭</button>
+
+    <p id="noMsg" style="font-size:20px; margin-top:20px;"></p>
 </div>
 
+
 <script>
-function wrong(){
-    alert("Nahi 😤 sochoo… try again!");
+function startPuzzle(){
+    document.getElementById("introBox").style.display="none";
+    document.getElementById("puzzleBox").style.display="block";
 }
 
-function correct(){
+function showMain(){
     document.getElementById("puzzleBox").style.display="none";
     document.getElementById("mainBox").style.display="block";
 }
 
-function moveNo(){
-    const btn=document.getElementById("noBtn");
-    btn.style.position="absolute";
-    btn.style.left=Math.random()*80+"%";
-    btn.style.top=Math.random()*80+"%";
+
+/* NO BUTTON MOVE */
+let noClickCount=0;
+function noMove(){
+    noClickCount++;
+
+    let noBtn=document.getElementById("noBtn");
+    let msg=document.getElementById("noMsg");
+
+    if(noClickCount == 1){
+        msg.innerHTML = "Are you sure? Think again 😭";
+        noBtn.style.position="absolute";
+        noBtn.style.left= Math.random()*60 + "%";
+        noBtn.style.top= Math.random()*60 + "%";
+    }
+    else if(noClickCount == 2){
+        msg.innerHTML = "Mimi please… don't say no 😣";
+        noBtn.style.left= Math.random()*70 + "%";
+        noBtn.style.top= Math.random()*70 + "%";
+    }
+    else{
+        msg.innerHTML = "Okay fine… but you *can't* click No anymore 😤💗";
+        noBtn.style.display="none";
+    }
 }
 
-function yesClicked(){
-    alert("Awwww 💗 I knew it!!");
+
+/* YES FINAL MESSAGE */
+function sayYes(){
+    document.body.innerHTML = `
+        <h1 style="margin-top:80px; font-size:42px; color:#ff0055;">
+            I knew it, Mimi… ❤️
+        </h1>
+
+        <p style="font-size:22px; line-height:30px; width:85%; margin:auto; margin-top:20px;">
+            Your “YES” isn’t just an answer…  
+            It’s the moment my whole world finally made sense. <br><br>
+
+            The truth is… Mimi, you make everything better —  
+            the days feel lighter, the nights feel warmer,  
+            and the future feels real. <br><br>
+
+            If the world was ending today,  
+            the only place I’d want to be…  
+            is right next to you — holding your hand,  
+            looking into your eyes,  
+            and loving you with everything I have. <br><br>
+
+            Thank you… for choosing me.  
+            For letting me in.  
+            For letting me love you.  
+        </p>
+
+        <h2 style="margin-top:50px; font-size:30px; color:#ff3f80;">
+            — Always yours,<br>
+            <strong style="font-size:35px;">Rujul ❤️</strong>
+        </h2>
+
+        <div style="margin-top:40px; font-size:50px;">
+            💞💗💞💗💞
+        </div>
+    `;
 }
 </script>
 
